@@ -1,0 +1,111 @@
+.App {
+  position: relative;
+  min-height: 100vh; /* to make footer stick to bottom of the page */
+}
+
+.Content {
+  position: relative;
+  min-height: inherit;
+  padding-bottom: 267px;
+  background: linear-gradient(180deg, #58706D 18.59%, rgba(255, 255, 255, 0.22) 114.8%);
+}
+
+@media screen and (max-width: 991px) {
+  .Content {
+    padding-bottom: 386px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .Content {
+    padding-bottom: 521px;
+  }
+}
+
+@media screen and (max-width: 375px) {
+  .Content {
+    padding-bottom: 546px;
+  }
+}
+
+.ant-form-item-label
+  > label.ant-form-item-required:not(.ant-form-item-required-mark-optional)::before {
+  color: #69a1f4 !important;
+}
+
+.ant-table table {
+  font-size: 16px;
+}
+
+.ant-table table > thead > tr > th {
+  font-weight: bold;
+}
+
+.ant-drawer-content-wrapper {
+  width: 80% !important;
+  max-width: 320px !important;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (max-width: 575px) {
+  .ant-menu-submenu-arrow {
+    display: none;
+  }
+  .ant-drawer-body > .ant-menu-vertical {
+    border: none;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-float infinite 3s ease-in-out;
+  }
+}
+.ant-carousel .slick-dots-bottom li button {
+  background-color: #13171c !important;
+}
+
+.App-header {
+  min-height: 40px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  border-bottom: 1px solid black;
+}
+
+.App-header a {
+  margin: 0 16px;
+}
+
+.App-link {
+  color: rgb(112, 76, 182);
+}
+.ant-checkbox-inner, .ant-checkbox-input {
+  transform: scale(1.2)
+}
+@keyframes App-logo-float {
+  0% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(10px);
+  }
+
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+@media only screen and (max-width: 1024px) {
+  .ant-dropdown-menu-submenu-popup {
+    display: none;
+  }
+}
+

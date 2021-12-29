@@ -1,0 +1,12 @@
+.slick-dots li button:before {
+  display: none;
+}
+
+.ant-carousel .slick-dots {
+  margin: 0 !important;
+  bottom: -20px !important;
+}
+
+/* .slick-list, .slick-track { 
+  touch-action: pan-y;
+} */
