@@ -12,7 +12,6 @@
     "@typescript-eslint/no-unsafe-call": 0
   },
   "extends": [
-    "airbnb-typescript/base",
     "eslint:recommended",
     "plugin:@typescript-eslint/recommended",
     "plugin:@typescript-eslint/recommended-requiring-type-checking",

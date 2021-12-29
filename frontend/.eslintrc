@@ -9,7 +9,6 @@
     "@typescript-eslint"
   ],
   "extends": [
-    "airbnb-typescript",
     "react-app",
     "prettier"
   ],
