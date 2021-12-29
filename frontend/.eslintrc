@@ -9,8 +9,7 @@
     "@typescript-eslint"
   ],
   "extends": [
-    "react-app",
-    "prettier"
+    "react-app"
   ],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
