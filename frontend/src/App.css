@@ -28,6 +28,31 @@
   }
 }
 
+.ant-menu-sub {
+  background-color: #d3d3d3 !important;
+}
+
+.ant-menu-sub > .ant-menu-item {
+  justify-content: center;
+  margin: 0 !important;
+}
+
+.ant-menu-sub a {
+  font-size: 18px;
+  line-height: 22px;
+  color: #6a6a6a !important;
+}
+
+.ant-menu-sub > .ant-menu-item-selected,
+.ant-menu-sub > .ant-menu-item:hover {
+  background-color: #54837d !important;
+}
+
+.ant-menu-sub > .ant-menu-item-selected a,
+.ant-menu-sub > .ant-menu-item:hover a {
+  color: #ffffff !important;
+}
+
 .ant-form-item-label
   > label.ant-form-item-required:not(.ant-form-item-required-mark-optional)::before {
   color: #69a1f4 !important;

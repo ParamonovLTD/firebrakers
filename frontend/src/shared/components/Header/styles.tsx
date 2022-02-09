@@ -1,4 +1,4 @@
-import { Menu, Select, Badge, Input, Dropdown, Col } from 'antd';
+import { Menu, Select, Badge, Input, Dropdown, Col, Button } from 'antd';
 import { Link } from 'react-router-dom';
 
 import styled from 'styled-components';
@@ -34,6 +34,13 @@ export const Container = styled.div`
   max-width: 2300px;
 `;
 
+export const MenuWrapper = styled.div`
+  max-width: 1240px;
+  margin: 0 auto;
+  padding-right: 20px;
+  padding-left: 20px;
+`;
+
 export const MenuContainer = styled.div`
   * {
     color: #fff;
@@ -51,6 +58,34 @@ export const MenuStyled = styled(Menu)`
   width: calc(100% - 260px);
   text-align: center;
 `;
+
+
+
+export const LoginButton = styled(Button)`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  text-align: center;
+  border: none;
+  
+  & > span:first-child {
+    height: 20px;
+  }
+
+  & > span:last-child {
+    margin-left: 8px;
+    font-size: 24px;
+    line-height: 30px;
+    color: #6a6a6a !important;
+  }
+`;
+
+
+
+
+
+
 
 export const SelectContainerStyled = styled.div`
   & > div > div,

@@ -1,12 +1,11 @@
-import { Menu } from 'antd';
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { MenuListElem } from '../Header/HeaderMenu';
-import { HeaderMenuItem, StyledMenu } from './style';
+import { HeaderMenuItem, HeaderSubMenu, StyledMenu } from './style';
+import { MenuListItem, MenuListSubItem } from '../../../interfaces/Menu';
 
 interface MenuProps {
   pathname: string,
-  itemsList: MenuListElem[],
+  itemsList: MenuListItem[],
 }
 
 export const HeaderMenuItems: React.FC<MenuProps> = ({pathname, itemsList}) => (
@@ -15,10 +14,18 @@ export const HeaderMenuItems: React.FC<MenuProps> = ({pathname, itemsList}) => (
     theme="light"
     selectedKeys={[pathname]}
   >
-    {itemsList.map((elem: MenuListElem) => (
-      <HeaderMenuItem key={elem.id}>
-        <Link to={elem.url}>{elem.title}</Link>
-      </HeaderMenuItem>
+    {itemsList.map((item: MenuListItem) => (
+      item.subMenuLinks !== null
+        ? <HeaderSubMenu key={item.id} title={item.title}>
+          {item.subMenuLinks.map((subItem: MenuListSubItem) => (
+            <HeaderMenuItem key={subItem.id}>
+              <Link to={subItem.url}>{subItem.title}</Link>
+            </HeaderMenuItem>
+          ))}
+        </HeaderSubMenu>
+        : <HeaderMenuItem key={item.id}>
+          <Link to={item.url}>{item.title}</Link>
+        </HeaderMenuItem>
     ))}
   </StyledMenu>
 );

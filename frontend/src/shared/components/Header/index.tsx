@@ -1,5 +1,5 @@
 import React, { FC, useCallback, useEffect, useState, useMemo } from 'react';
-import { Col, Row, Badge } from 'antd';
+import { Col, Row, Badge, Button } from 'antd';
 import { MailOutlined, ShoppingCartOutlined } from '@ant-design/icons';
 import { useHistory, useLocation } from 'react-router';
 import { useDispatch, useSelector } from 'react-redux';
@@ -12,6 +12,7 @@ import { HeaderMenu } from './HeaderMenu';
 //   userSelector,
 // } from '../../../store/slices/authSlice';
 import { UserDropdown } from './UserDropdown';
+import LoginButtonIcon from '../LoginButtonIcon';
 
 export const Header: FC = () => {
   const dispatch = useDispatch();
