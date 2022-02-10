@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Button, Modal, Form, Input, Radio, Checkbox } from 'antd';
 import { LockOutlined, UserOutlined } from '@ant-design/icons';
+import { FormSubmitItem, LoginModal, StyledLoginForm } from './styles';
 
 export interface LoginValues {
   username: string;
@@ -18,9 +19,10 @@ const LoginForm: React.FC<CollectionCreateFormProps> = ({visible, onCreate, onCa
   const [form] = Form.useForm();
 
   return (
-    <Modal
+    <LoginModal
       visible={visible}
-      footer={null}
+      title='Войти на сайт'
+      footer={'*Данные для авторизации предоставляет Учебный пункт 2 пожарно-спасательный отряд ФПС ГПС главного управления МЧС России по Ростовской области'}
       onCancel={onCancel}
       onOk={() => {
         form
@@ -34,17 +36,17 @@ const LoginForm: React.FC<CollectionCreateFormProps> = ({visible, onCreate, onCa
           });
       }}
     >
-      <Form
+      <StyledLoginForm
         form={form}
         layout="vertical"
         name="login"
         initialValues={{ remember: true }}
       >
         <Form.Item
-          name="username"
-          rules={[{ required: true, message: 'Пожалуйста, введите логин!' }]}
+          name="email"
+          rules={[{ required: true, message: 'Пожалуйста, введите e-mail!', type: 'email' }]}
         >
-          <Input prefix={<UserOutlined />} placeholder="Логин" />
+          <Input prefix={<UserOutlined />} placeholder="E-mail" />
         </Form.Item>
         <Form.Item
           name="password"
@@ -57,15 +59,15 @@ const LoginForm: React.FC<CollectionCreateFormProps> = ({visible, onCreate, onCa
           />
         </Form.Item>
         <Form.Item name="remember" valuePropName="checked" noStyle>
-          <Checkbox>Remember me</Checkbox>
+          <Checkbox>Запомнить меня</Checkbox>
         </Form.Item>
-        <Form.Item>
+        <FormSubmitItem>
           <Button type="primary" htmlType="submit">
             Войти
           </Button>
-        </Form.Item>
-      </Form>
-    </Modal>
+        </FormSubmitItem>
+      </StyledLoginForm>
+    </LoginModal>
   );
 };
 
