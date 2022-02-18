@@ -11,7 +11,6 @@ import { HeaderMenu } from './HeaderMenu';
 //   logOut,
 //   userSelector,
 // } from '../../../store/slices/authSlice';
-import { UserDropdown } from './UserDropdown';
 import LoginButtonIcon from '../LoginButtonIcon';
 
 export const Header: FC = () => {

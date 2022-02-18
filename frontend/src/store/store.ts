@@ -1,10 +1,12 @@
 /* eslint-disable @typescript-eslint/indent */
 import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
 import accountReducer from './slices/accountSlice';
+import authReducer from './slices/authSlice';
 
 export const store = configureStore({
   reducer: {
     account: accountReducer,
+    auth: authReducer,
   },
 });
 

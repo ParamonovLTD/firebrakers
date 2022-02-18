@@ -4,9 +4,8 @@ import { LockOutlined, UserOutlined } from '@ant-design/icons';
 import { FormSubmitItem, LoginModal, StyledLoginForm } from './styles';
 
 export interface LoginValues {
-  username: string;
+  email: string;
   password: string;
-  isRemember: boolean;
 }
 
 interface CollectionCreateFormProps {
@@ -22,24 +21,24 @@ const LoginForm: React.FC<CollectionCreateFormProps> = ({visible, onCreate, onCa
     <LoginModal
       visible={visible}
       title='Войти на сайт'
-      footer={'*Данные для авторизации предоставляет Учебный пункт 2 пожарно-спасательный отряд ФПС ГПС главного управления МЧС России по Ростовской области'}
       onCancel={onCancel}
-      onOk={() => {
-        form
-          .validateFields()
-          .then((values) => {
-            form.resetFields();
-            onCreate(values);
-          })
-          .catch((info) => {
-            console.log('Validate Failed:', info);
-          });
-      }}
+      footer={'*Данные для авторизации предоставляет Учебный пункт 2 пожарно-спасательный отряд ФПС ГПС главного управления МЧС России по Ростовской области'}
     >
       <StyledLoginForm
         form={form}
         layout="vertical"
         name="login"
+        onFinish={() => {
+          form
+            .validateFields()
+            .then((values) => {
+              form.resetFields();
+              onCreate(values);
+            })
+            .catch((info) => {
+              console.log('Validate Failed:', info);
+            });
+        }}
         initialValues={{ remember: true }}
       >
         <Form.Item
@@ -58,9 +57,9 @@ const LoginForm: React.FC<CollectionCreateFormProps> = ({visible, onCreate, onCa
             placeholder="Пароль"
           />
         </Form.Item>
-        <Form.Item name="remember" valuePropName="checked" noStyle>
-          <Checkbox>Запомнить меня</Checkbox>
-        </Form.Item>
+        {/*<Form.Item name="remember" valuePropName="checked" noStyle>*/}
+        {/*  <Checkbox>Запомнить меня</Checkbox>*/}
+        {/*</Form.Item>*/}
         <FormSubmitItem>
           <Button type="primary" htmlType="submit">
             Войти

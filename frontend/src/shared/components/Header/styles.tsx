@@ -61,7 +61,7 @@ export const MenuStyled = styled(Menu)`
 
 
 
-export const LoginButton = styled(Button)`
+export const LoginButton  = styled(Button)`
   display: flex;
   justify-content: center;
   align-items: center;

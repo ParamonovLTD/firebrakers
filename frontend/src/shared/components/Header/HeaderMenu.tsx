@@ -9,6 +9,9 @@ import { HeaderMenuItems } from '../HeaderMenuItems';
 import { MenuListItem } from '../../../interfaces/Menu';
 import LoginButtonIcon from '../LoginButtonIcon';
 import LoginForm, { LoginValues } from '../LoginForm';
+import { useDispatch, useSelector } from 'react-redux';
+import { isAuthenticatedSelector, login, logout, userRoleSelector } from '../../../store/slices/authSlice';
+import { useHistory } from 'react-router';
 
 const userList: MenuListItem[] = [
   {
@@ -53,6 +56,76 @@ const userList: MenuListItem[] = [
   },
 ];
 
+const adminList: MenuListItem[] = [
+  {
+    id: '/',
+    title: 'Главная',
+    url: '/',
+    subMenuLinks: null,
+  },
+  {
+    id: '/add',
+    title: 'Добавить студента',
+    url: '/add',
+    subMenuLinks: null,
+  },
+  {
+    id: '/adminTests',
+    title: 'Тесты',
+    url: '/adminTests',
+    subMenuLinks: null,
+  },
+];
+
+const studentList: MenuListItem[] = [
+  {
+    id: '/',
+    title: 'Главная',
+    url: '/',
+    subMenuLinks: null,
+  },
+  {
+    id: '/info',
+    title: 'Сведения',
+    url: '/info',
+    subMenuLinks: [
+      {
+        id: '/123',
+        title: 'link',
+        url: '/123',
+      },
+      {
+        id: '/1234',
+        title: 'link1',
+        url: '/1234',
+      },
+      {
+        id: '/12345',
+        title: 'link2',
+        url: '/12345',
+      }
+    ],
+  },
+  {
+    id: '/documents',
+    title: 'Документы',
+    url: '/documents',
+    subMenuLinks: null,
+  },
+  {
+    id: '/education',
+    title: 'Обучение',
+    url: '/education',
+    subMenuLinks: null,
+  },
+  {
+    id: '/tests',
+    title: 'Тесты',
+    url: '/tests',
+    subMenuLinks: null,
+  },
+];
+
 const MenuLayout = {
   sm: {
     span: 22
@@ -70,9 +143,10 @@ const LoginLayout = {
 }
 
 export const HeaderMenu: FC = () => {
-  // const role = useSelector(userRoleSelector);
-  const role = 'user';
+  const role = useSelector(userRoleSelector);
+  const dispatch = useDispatch()
   const location = useLocation();
+  const history = useHistory();
   const { pathname } = location;
 
 
@@ -81,14 +155,48 @@ export const HeaderMenu: FC = () => {
   const [menuLinks, setMenuLinks] = useState<any>([]);
   const [modalVisible, setModalVisible] = useState(false)
 
+
+  const isAuth = useSelector(isAuthenticatedSelector)
+
   const onCreate = (values: LoginValues) => {
-    console.log('Received values of form: ', values);
-    setModalVisible(false);
+    dispatch(login(values))
+    history.push('/')
+  };
+
+  const onLogout = () => {
+    dispatch(logout())
+    history.push('/')
   };
 
   useEffect(() => {
+    if(isAuth) {
+      setModalVisible(false);
+    }
+  }, [isAuth]);
+
+  useEffect(() => {
     switch (role) {
-      case 'user': {
+      case 'admin': {
+        setMenuLinks(() => (
+          <HeaderMenuItems
+            pathname={pathname}
+            itemsList={adminList}
+          />
+        ));
+        break;
+      }
+
+      case 'student': {
+        setMenuLinks(() => (
+          <HeaderMenuItems
+            pathname={pathname}
+            itemsList={studentList}
+          />
+        ));
+        break;
+      }
+
+      default: {
         setMenuLinks(() => (
           <HeaderMenuItems
             pathname={pathname}
@@ -98,7 +206,6 @@ export const HeaderMenu: FC = () => {
         break;
       }
 
-      default: return
     }
   }, [role, location]);
 
@@ -113,18 +220,33 @@ export const HeaderMenu: FC = () => {
           </Col>
 
           <Col {...LoginLayout} style={{display: 'flex', justifyContent: 'flex-end'}}>
-            <LoginButton
-              type="link"
-              onClick={() => setModalVisible(true)}
-              icon={<LoginButtonIcon />}
-            >
-              Войти
-            </LoginButton>
-            <LoginForm
-              visible={modalVisible}
-              onCreate={onCreate}
-              onCancel={() => setModalVisible(false)}
-            />
+            {!isAuth
+              ?
+                <>
+                  <LoginButton
+                    type="link"
+                    onClick={() => setModalVisible(true)}
+                    icon={<LoginButtonIcon />}
+                  >
+                    Войти
+                  </LoginButton>
+                  <LoginForm
+                    visible={modalVisible}
+                    onCreate={onCreate}
+                    onCancel={() => setModalVisible(false)}
+                  />
+                </>
+              :
+                <LoginButton
+                  type="link"
+                  onClick={onLogout}
+                  icon={<LoginButtonIcon />}
+                >
+                  Выйти
+                </LoginButton>
+
+            }
+
           </Col>
 
         </Row>
