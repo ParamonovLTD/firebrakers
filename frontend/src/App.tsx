@@ -1,6 +1,5 @@
 import React, { memo, FC, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import { io } from 'socket.io-client';
 import { useDispatch, useSelector } from 'react-redux';
 import './App.css';
 import 'antd/dist/antd.css';
