@@ -1,20 +1,10 @@
-/* eslint-disable @typescript-eslint/indent */
 import { createSlice, Dispatch, PayloadAction } from '@reduxjs/toolkit';
-import { IAuthResponse, IRegisterResponse, User } from '../../interfaces/Login';
+import { IAuthResponse, IRegisterResponse, LoginData, RegisterData, User } from '../../interfaces/Login';
 import { AppThunk, RootState } from '../store';
 import { axiosInstance } from '../../core/axios';
 import { notification } from 'antd';
 
-export interface RegisterData {
-  name: string;
-  email: string;
-  password: string;
-}
 
-export interface LoginData {
-  email: string;
-  password: string;
-}
 
 
 export interface AuthState {
@@ -105,9 +95,13 @@ export const register = ( registerData: RegisterData): AppThunk => async (
     const res = await axiosInstance.post<IRegisterResponse>('/auth/signup', registerData);
     dispatch(registerSuccess(res.data));
 
-  } catch (e: any) {
-    console.log('checkAuthError message= ', e.message);
-    dispatch(registerFailure(e.message));
+    notification.success({
+      message: 'Пользователь успешно зарегистрирован'
+    });
+
+  } catch {
+    console.log('checkAuthError message= ');
+    dispatch(registerFailure('Register error'));
   }
 };
 
@@ -123,9 +117,17 @@ export const login = (loginData: LoginData): AppThunk => async (
     dispatch(loginSuccess(res.data));
     dispatch(setAccessToken({ accessToken: res.data.accessToken }));
 
-  } catch (checkAuthError: any) {
-    console.log('checkAuthError message= ', checkAuthError.message);
-    dispatch(loginFailure(checkAuthError.message));
+    notification.success({
+      message: 'Вы успешно вошли'
+    });
+  } catch {
+    console.log('checkAuthError message= ');
+    notification.error({
+      message: 'Не удалось войти',
+      description:
+        'Неверные данные',
+    });
+    dispatch(loginFailure('Login error'));
   }
 };
 
@@ -142,7 +144,8 @@ export const isAuthenticatedSelector = (state: RootState) =>
   state.auth.isAuthenticated;
 export const userSelector = (state: RootState) => state.auth.user;
 export const userRoleSelector = (state: RootState) => state.auth.user?.role;
-export const userIdSelector = (state: RootState) => state.auth.user?.id;
+export const userIdSelector = (state: RootState) => state.auth.user?._id;
+export const userNameSelector = (state: RootState) => state.auth.user?.name;
 
 
 export default authSlice.reducer;

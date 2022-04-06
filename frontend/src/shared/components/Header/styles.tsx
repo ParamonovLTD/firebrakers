@@ -16,7 +16,11 @@ export const LogoContainer = styled(Col)`
   flex-direction: row;
   justify-content: start;
   align-items: center;
-  width: 100%; 
+  width: 100%;
+  
+  @media (max-width: 500px) {
+    justify-content: center;
+  }
 `;
 
 export const LogoText = styled.div`

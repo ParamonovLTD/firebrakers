@@ -44,12 +44,21 @@ export const FooterBlockTitle = styled(Typography.Title)`
     font-weight: 700;
     font-size: 16px;
     color: #e5e5e5;
+    
+    @media (max-width: 768px) {
+      font-size: 24px;
+    }
   }
 `;
 
 export const Address = styled.span`
   color: #d6d9de;
   font-size: 16px;
+
+  @media (max-width: 768px) {
+    font-size: 18px;
+    line-height: 22px;
+  }
 `;
 
 export const Contacts = styled(Row)`
@@ -68,6 +77,11 @@ export const ContactTitle = styled.span`
   font-size: 14px;
   line-height: 17px;
   color: #d6d9de;
+
+  @media (max-width: 768px) {
+    font-size: 16px;
+    line-height: 18px;
+  }
 `;
 
 export const Contact = styled.span`

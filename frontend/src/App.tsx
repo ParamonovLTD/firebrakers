@@ -1,6 +1,6 @@
-import React, { memo, FC, useEffect } from 'react';
+import React, { memo, FC } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import './App.css';
 import 'antd/dist/antd.css';
 import Footer from './shared/components/Footer';

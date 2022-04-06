@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Button, Modal, Form, Input, Radio, Checkbox } from 'antd';
+import React from 'react';
+import { Button, Form, Input } from 'antd';
 import { LockOutlined, UserOutlined } from '@ant-design/icons';
 import { FormSubmitItem, LoginModal, StyledLoginForm } from './styles';
 
@@ -8,13 +8,13 @@ export interface LoginValues {
   password: string;
 }
 
-interface CollectionCreateFormProps {
+interface LoginFormProps {
   visible: boolean;
   onCreate: (values: LoginValues) => void;
   onCancel: () => void;
 }
 
-const LoginForm: React.FC<CollectionCreateFormProps> = ({visible, onCreate, onCancel}) => {
+const LoginForm: React.FC<LoginFormProps> = ({visible, onCreate, onCancel}) => {
   const [form] = Form.useForm();
 
   return (
@@ -39,7 +39,6 @@ const LoginForm: React.FC<CollectionCreateFormProps> = ({visible, onCreate, onCa
               console.log('Validate Failed:', info);
             });
         }}
-        initialValues={{ remember: true }}
       >
         <Form.Item
           name="email"
@@ -57,9 +56,6 @@ const LoginForm: React.FC<CollectionCreateFormProps> = ({visible, onCreate, onCa
             placeholder="Пароль"
           />
         </Form.Item>
-        {/*<Form.Item name="remember" valuePropName="checked" noStyle>*/}
-        {/*  <Checkbox>Запомнить меня</Checkbox>*/}
-        {/*</Form.Item>*/}
         <FormSubmitItem>
           <Button type="primary" htmlType="submit">
             Войти

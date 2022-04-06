@@ -26,20 +26,30 @@ const userList: MenuListItem[] = [
     url: '/info',
     subMenuLinks: [
       {
-        id: '/123',
-        title: 'link',
-        url: '/123',
+        id: 'link1',
+        title: 'Основные сведения',
+        url: '/',
       },
       {
-        id: '/1234',
-        title: 'link1',
-        url: '/1234',
+        id: 'link2',
+        title: 'Образовательные стандарты',
+        url: '/',
       },
       {
-        id: '/12345',
-        title: 'link2',
-        url: '/12345',
-      }
+        id: 'link3',
+        title: 'Платные образовательные услуги',
+        url: '/',
+      },
+      {
+        id: 'link4',
+        title: 'Руководство. Педагогический состав',
+        url: '/',
+      },
+      {
+        id: 'link5',
+        title: 'Материально-техническое обеспечение',
+        url: '/',
+      },
     ],
   },
   {
@@ -90,20 +100,30 @@ const studentList: MenuListItem[] = [
     url: '/info',
     subMenuLinks: [
       {
-        id: '/123',
-        title: 'link',
-        url: '/123',
+        id: 'link1',
+        title: 'Основные сведения',
+        url: '/',
       },
       {
-        id: '/1234',
-        title: 'link1',
-        url: '/1234',
+        id: 'link2',
+        title: 'Образовательные стандарты',
+        url: '/',
       },
       {
-        id: '/12345',
-        title: 'link2',
-        url: '/12345',
-      }
+        id: 'link3',
+        title: 'Платные образовательные услуги',
+        url: '/',
+      },
+      {
+        id: 'link4',
+        title: 'Руководство. Педагогический состав',
+        url: '/',
+      },
+      {
+        id: 'link5',
+        title: 'Материально-техническое обеспечение',
+        url: '/',
+      },
     ],
   },
   {
@@ -127,17 +147,21 @@ const studentList: MenuListItem[] = [
 ];
 
 const MenuLayout = {
-  sm: {
-    span: 22
+  xs: {
+    span: 22,
+    offset: 0
   },
-  md: {
+  lg: {
     span: 16,
     offset: 4
   }
 }
 
 const LoginLayout = {
-  md: {
+  xs: {
+    span: 2
+  },
+  lg: {
     span: 4
   }
 }

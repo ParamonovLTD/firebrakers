@@ -1,33 +1,11 @@
-import React, { FC, useCallback, useEffect, useState, useMemo } from 'react';
-import { Col, Row, Badge, Button } from 'antd';
-import { MailOutlined, ShoppingCartOutlined } from '@ant-design/icons';
-import { useHistory, useLocation } from 'react-router';
-import { useDispatch, useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
+import React, { FC } from 'react';
+import { Row } from 'antd';
 import { StyledHeader, Container, LogoText, LogoContainer } from './styles';
 import { HeaderMenu } from './HeaderMenu';
-// import {
-//   isAuthenticatedSelector,
-//   logOut,
-//   userSelector,
-// } from '../../../store/slices/authSlice';
-import LoginButtonIcon from '../LoginButtonIcon';
+import useWindowDimensions from '../../hooks/useWindowDimensions';
 
 export const Header: FC = () => {
-  const dispatch = useDispatch();
-  const location = useLocation();
-  const history = useHistory();
-  const params = useMemo(() => new URLSearchParams(location.search),
-    [location]);
-
-  // const isAuthenticated = useSelector(isAuthenticatedSelector);
-  // const user = useSelector(userSelector);
-
-  // const handleLogout = useCallback(() => {
-  //   dispatch(logOut());
-  //   history.push('/login');
-  // }, [dispatch, history]);
-
+  const { height, width } = useWindowDimensions();
 
   return (
     <>
@@ -40,10 +18,15 @@ export const Header: FC = () => {
                 alt="Logo"
                 style={{ width: '90%', maxWidth: '71px' }}
               />
-              <LogoText>
-                Федеральное государственное казённое учреждение <br />
-                "2 отряд федеральной противопожарной службы по Ростовской области"
-              </LogoText>
+              {width > 500
+               ?
+                  <LogoText>
+                    Учебный пункт 2 пожарно-спасательного отряда ФПС ГПС <br />
+                    Главного управления МЧС России по Ростовской области
+                  </LogoText>
+                :
+                  null
+              }
             </LogoContainer>
           </Row>
         </Container>

@@ -5,17 +5,16 @@ import {
   StarFilled,
   HeartOutlined,
 } from '@ant-design/icons';
-import { Button } from 'antd';
 
 export interface StarProps {
   golden?: boolean;
 }
 
-export interface CarouselContainer {
+export interface ICarouselContainer {
   trending?: boolean;
 }
 
-export const CarouselContainer = styled.div<CarouselContainer>`
+export const CarouselContainer = styled.div<ICarouselContainer>`
   width: 102.5%;
   margin-left: -14px;
   height: 460px;
@@ -190,9 +189,9 @@ export const GalleryArrowLeft = styled(LeftOutlined)`
     width: 40px;
     height: 40px;
   }
-  
+
   :focus {
-    color: #000;
+    color: #ffffff;
   }
   
   @media (max-width: 1300px) {
@@ -284,7 +283,7 @@ export const GalleryArrowRight = styled(RightOutlined)`
   }
   
   :focus {
-    color: #000;
+    color: #ffffff;
   }
   
   @media (max-width: 1300px) {

@@ -13,6 +13,55 @@ export const StyledMenu = styled(Menu)`
   &.ant-menu-submenu-popup {
     background-color: blue !important;
   }
+
+  @media (max-width: 780px) {
+    flex-direction: column;
+  }
+
+  // Vertical
+  &.ant-menu-vertical {
+    border-right: none;
+  }
+  
+  &:not(.ant-menu-horizontal) .ant-menu-item-selected {
+    position: relative;
+    background-color: transparent;
+    
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      bottom: 0 !important;
+      left: 5px;
+      width: 2px;
+      height: 100%;
+      background-color: #fff;
+    }
+  }
+
+  &:not(.ant-menu-horizontal) .ant-menu-submenu-selected .ant-menu-submenu-title {
+    position: relative;
+    
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      bottom: 0 !important;
+      left: 5px;
+      width: 2px;
+      height: 100%;
+      background-color: #fff;
+    }
+  }
+  
+  & .ant-menu-submenu-title {
+    position: relative;
+    background-color: transparent;
+  }
+
+  .ant-menu-submenu:hover > .ant-menu-submenu-title > .ant-menu-submenu-arrow {
+    color: #6a6a6a;
+  }
 `;
 
 export const HeaderMenuItem = styled(Menu.Item)`
@@ -38,7 +87,7 @@ export const HeaderMenuItem = styled(Menu.Item)`
 
   &.ant-menu-item-selected::after,
   &:hover::after {
-    border-bottom-color: #ffffff !important;
+    border-bottom: 2px solid #ffffff !important;
   }
 `;
 
@@ -48,14 +97,15 @@ export const HeaderSubMenu = styled(Menu.SubMenu)`
     align-items: center;
     height: 42px;
   }
-  &.ant-menu-submenu-popup {
-    background-color: red !important;
-  }
   
   & .ant-menu-submenu-title {
     font-size: 24px;
     line-height: 30px;
     color: #6a6a6a !important;
+
+    &:active {
+      background-color: transparent;
+    }
   }
 
   &::after {

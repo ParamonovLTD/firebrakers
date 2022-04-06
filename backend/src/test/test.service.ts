@@ -5,6 +5,7 @@ import { Test, TestDocument } from './schemas/test.schema';
 import { CreateTestDto } from './dto/create-test.dto';
 import { UpdateTestDto } from './dto/update-test.dto';
 import { IResult } from '../types/result';
+import { SetTestResultDto } from './dto/set-test-result.dto';
 
 
 @Injectable()
@@ -37,5 +38,15 @@ export class TestService {
   async results(id: ObjectId): Promise<IResult[] | undefined> {
     const test: Test | null = await this.testModel.findById(id)
     return test?.results
+  }
+
+  async setResult(id: ObjectId, dto: SetTestResultDto): Promise<Test | null> {
+    const testToUpdate = await this.testModel
+      .findByIdAndUpdate(id, {
+        $push: {'results': dto}
+      })
+      .setOptions({ overwrite: true, new: true })
+
+    return testToUpdate
   }
 }

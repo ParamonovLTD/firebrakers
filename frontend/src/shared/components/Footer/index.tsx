@@ -1,11 +1,6 @@
 import React, { memo, FC } from 'react';
 import { Col, Row } from 'antd';
-import {
-  FacebookFilled,
-  TwitterSquareFilled,
-  LinkedinFilled,
-} from '@ant-design/icons';
-import { Link, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import {
   StyledFooter,
   MainFooterContainer,
@@ -24,10 +19,6 @@ const layout = {
 };
 
 const Footer: FC = () => {
-  const location = useLocation();
-  const { pathname } = location;
-  const pathnames = pathname.split('/').filter((item) => item);
-
   return (
     <StyledFooter>
       <MainFooterContainer>

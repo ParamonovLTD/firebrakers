@@ -1,7 +1,5 @@
 import React, { FC, memo } from 'react';
-import { useSelector } from 'react-redux';
 import { Route, Redirect, RouteProps, useLocation } from 'react-router-dom';
-// import { userRoleSelector } from '../store/slices/authSlice';
 
 interface Props extends RouteProps {
   forRole: string | string[];

@@ -24,7 +24,7 @@ const Banner: React.FC<Props> = ({ data }) => {
       <Col xs={24} md={10}>
         <ImageFluid src={imageUrl} alt={imageAlt} />
       </Col>
-      <Col xs={24} md={10}>
+      <Col xs={24} md={{ span: 10, offset: 1}}>
         <BannerTitle>{title}</BannerTitle>
         <BannerText>{text}</BannerText>
         <BannerLink to={`/news/${newsId}`}>Читать далее</BannerLink>

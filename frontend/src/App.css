@@ -18,13 +18,13 @@
 
 @media screen and (max-width: 768px) {
   .Content {
-    padding-bottom: 521px;
+    padding-bottom: 667px;
   }
 }
 
 @media screen and (max-width: 375px) {
   .Content {
-    padding-bottom: 546px;
+    padding-bottom: 711px;
   }
 }
 
